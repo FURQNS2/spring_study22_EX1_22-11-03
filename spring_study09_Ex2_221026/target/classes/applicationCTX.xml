@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+<!-- 공통기능 넣기 시작 -->
+
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<bean id="LogAop" class="com.sycompany.test.LogAop"></bean> <!-- 객체형성  LogAop logAop = new LogAop -->
+	
+<!-- 공통기능 넣기 끝 -->	
+	
+	
+
+	<bean id="student" class="com.sycompany.test.Student">
+		<property name="name" value="홍길동"></property>
+		<property name="age" value="30"></property>
+		<property name="gradeNum" value="4"></property>
+	
+	</bean>
+
+	<bean id="soldier" class="com.sycompany.test.Soldier">
+		<property name="name" value="이순신"></property>
+		<property name="age" value="56"></property>
+		<property name="grade" value="장군"></property>
+	
+	</bean>
+</beans>

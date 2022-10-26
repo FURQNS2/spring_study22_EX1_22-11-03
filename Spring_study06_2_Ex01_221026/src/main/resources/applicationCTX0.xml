@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean class="com.sycompany.sy.ApplicationConfig"/>
+
+	<bean id="student4" class="com.sycompany.sy.Student" scope="">
+		<constructor-arg value="을지문덕"></constructor-arg>
+		<constructor-arg value="52"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>기마술</value>
+				<value>전략짜기</value>				
+			</list>
+		</constructor-arg>
+		<property name="height" value="180"></property>
+		<property name="weight" value="97"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bmicalculator" class="com.sycompany.test.BMICalculator">   <!-- id:객체형성, class: 클래스 위치 불러드림 -->
+		<property name="lowWeight" value="18.5"></property>     <!-- name: 멤버변수이름, value: 초기값 -->
+		<property name="normal" value="23"></property>
+		<property name="overWeight" value="25"></property>
+		<property name="obesity" value="30"></property>
+	
+	</bean>	
+	
+	<bean id="myInfo1" class="com.sycompany.test.Myinfo">
+		<property name="name" value="홍길동"></property>   <!-- name: 멤버변수이름, value: 초기값  -->
+		<property name="weight" value="85"></property>
+		<property name="height" value="180"></property>
+		<property name="hobbys">
+			<list>
+				<value>영화감상</value>
+				<value>운동</value>
+				<value>게임</value>
+			</list>
+		</property>
+		<property name="bmicalculator">
+			<ref bean="bmicalculator" />   <!-- 무엇에서 가져왔는지 표기 -->
+		</property>
+	</bean>	
+
+	<bean id="myInfo2" class="com.sycompany.test.Myinfo">
+		<property name="name" value="김유신"></property>   <!-- name: 멤버변수이름, value: 초기값  -->
+		<property name="weight" value="95"></property>
+		<property name="height" value="170"></property>
+		<property name="hobbys">
+			<list>
+				<value>영화감상</value>
+				<value>음악감상</value>
+				<value>노래하기</value>
+			</list>
+		</property>
+		<property name="bmicalculator">
+			<ref bean="bmicalculator" />   <!-- 무엇에서 가져왔는지 표기 -->
+		</property>
+	</bean>	
+
+</beans>
