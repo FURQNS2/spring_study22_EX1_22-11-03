@@ -1,6 +1,7 @@
 package com.sycompany.sy;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ public class ApplicationConfig {
 		hobbys.add("노래");
 		hobbys.add("게임");
 		
+
 		Student student = new Student("홍길동", 30, hobbys);
 		
 		student.setHeight(180);
