@@ -8,23 +8,38 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 
 public class TicketDao {
 
 	//DataSource dataSource;
 	JdbcTemplate template;
 	
+	TransactionTemplate transactionTemplate; 
 	
 	
-	
+
+	public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
+		this.transactionTemplate = transactionTemplate;
+	}
 
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
 	
+	
+	
+	
 	public void buyTicket(final TicketDto dto) {
 		
-		this.template.update(new PreparedStatementCreator() {
+		transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+			
+			@Override
+			protected void doInTransactionWithoutResult(TransactionStatus status) {
+
+		template.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -39,8 +54,7 @@ public class TicketDao {
 		});	
 		
 	
-	
-		this.template.update(new PreparedStatementCreator() {
+		template.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
@@ -54,5 +68,9 @@ public class TicketDao {
 			}
 		});	
 		
- }
+			
+		}
+	});
+}
+	
 }
